@@ -17,7 +17,7 @@ interface Props extends RouteComponentProps {
 interface MobxProps extends Props {
   homeStore: HomeStore
 }
-
+// wqefrvf
 @inject('homeStore')
 @observer
 class App extends Component<Props> {
