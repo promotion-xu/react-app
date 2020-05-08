@@ -4,6 +4,7 @@ import HomeStore from 'store/home';
 import {
   RouteComponentProps
 } from 'react-router-dom';
+import './index.css';
 
 interface IProps extends RouteComponentProps { }
 

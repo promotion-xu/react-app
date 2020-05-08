@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+import './index.css';
 
 class Login extends React.Component {
   render() {
