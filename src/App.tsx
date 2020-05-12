@@ -31,7 +31,7 @@ class App extends Component<Props> {
       <div className="App">
         <header className="App-header">
           <p>切换
-            <Link to={'login'}>Login
+            <Link to={'login'}>Loginmasterasd
             </Link>
             <Link to={'home'}>Homeasfnjkxuzhenasd
             </Link>
