@@ -6,7 +6,7 @@ import { inject, observer } from 'mobx-react'
 import HomeStore from './store/home';
 import { R } from 'router/index'
 
-import './App.css';
+import './App.css'; 
 
 
 
