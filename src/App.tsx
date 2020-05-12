@@ -33,7 +33,7 @@ class App extends Component<Props> {
           <p>切换
             <Link to={'login'}>Login
             </Link>
-            <Link to={'home'}>Homeasfnjkxuzhen
+            <Link to={'home'}>Homeasfnjkxuzhenasd
             </Link>
           </p>
         </header>
