@@ -38,7 +38,7 @@ class App extends Component<Props> {
           </p>
         </header>
         <main className="App-content">
-          <R  />
+          <R />
         </main>
       </div>
     );
