@@ -6,7 +6,7 @@ import { inject, observer } from 'mobx-react'
 import HomeStore from './store/home';
 import { R } from 'router/index'
 
-import './App.css';
+import './App.css'; 
 
 
 
@@ -33,7 +33,7 @@ class App extends Component<Props> {
           <p>切换
             <Link to={'login'}>Loginmasterasd
             </Link>
-            <Link to={'home'}>Homeasfnjkxuzhen
+            <Link to={'home'}>Homeasfnjkxuzhenasd
             </Link>
           </p>
         </header>
