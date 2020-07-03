@@ -6,7 +6,7 @@ import { inject, observer } from 'mobx-react'
 import HomeStore from './store/home';
 import { R } from 'router/index'
 
-import './App.css'; 
+import './App.css';
 
 
 
@@ -23,6 +23,7 @@ interface MobxProps extends Props {
 class App extends Component<Props> {
 
   get injected() {
+    const a = 0
     return this.props as MobxProps
   }
 
