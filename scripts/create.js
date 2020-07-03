@@ -3,13 +3,16 @@
  */
 
 let fs = require("fs");
-let basepath = "../src/views/";
+let basepath = "src/views/";
 let moment = require("moment");
 let cptName = process.argv.splice(2)[0];
 let path = cptName.split("/");
 let name = path[path.length - 1];
 let writes = [`index.tsx`, `index.less`, `components`, `models`, `services`];
-let reads = [`basicComponents/index.tsx`, `basicComponents/index.less`];
+let reads = [
+  `scripts/basicComponents/index.tsx`,
+  `scripts/basicComponents/index.less`,
+];
 let file = [];
 let author = require("os").homedir().split("\\").pop();
 
