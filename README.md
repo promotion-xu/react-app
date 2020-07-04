@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## feature
+
+1. react-mobx
+2. create basic components / cli "/scripts/CreateComponentsCLI"
+
 ## Available Scripts
 
 In the project directory, you can run:

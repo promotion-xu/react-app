@@ -1,0 +1,23 @@
+{
+  "name": "create-components-cli",
+  "version": "1.0.1",
+  "description": "create project basice module",
+  "main": "generate.js",
+  "bin": {
+    "generate-cli": "generate.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "create components"
+  ],
+  "author": "xuzhen",
+  "license": "ISC",
+  "devDependencies": {
+    "chalk": "^4.1.0",
+    "fs-extra": "^9.0.1",
+    "log-symbols": "^4.0.0"
+  }
+}
