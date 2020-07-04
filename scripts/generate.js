@@ -47,11 +47,9 @@ const createComponent = (demoPath, targetpath, name) => {
 // 拿到命令行输入的模块名
 const moduleName = process.argv[2];
 // 默认模版目录
-const componentModulePath = path.resolve(
-  "./scripts/CreateComponentsCLI/template"
-);
-const assetsModulePath = path.resolve("./scripts/CreateComponentsCLI/assets");
-const localeModulePath = path.resolve("./scripts/CreateComponentsCLI/locales");
+const componentModulePath = path.resolve("./scripts/template");
+const assetsModulePath = path.resolve("./scripts/assets");
+const localeModulePath = path.resolve("./scripts/locales");
 // 输出的目标目录
 const componentTargetPath = path.resolve("src/views");
 const assetsTargetPath = path.resolve("src/assets");

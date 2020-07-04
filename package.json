@@ -29,7 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate": "node scripts/CreateComponentsCLI/generate.js"
+    "scp": "node scripts/scp",
+    "generate": "node scripts/generate.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,6 +53,7 @@
     "chalk": "^4.1.0",
     "eslint": "^6.6.0",
     "fs-extra": "^9.0.1",
-    "log-symbols": "^4.0.0"
+    "log-symbols": "^4.0.0",
+    "scp2": "^0.5.0"
   }
 }
