@@ -1,83 +1,60 @@
-/**
- * Created by 51375 on 2017/7/8.
- */
+#!/usr/bin/env node
 
-let fs = require("fs");
-let basepath = "src/views/";
-let moment = require("moment");
-let cptName = process.argv.splice(2)[0];
-let path = cptName.split("/");
-let name = path[path.length - 1];
-let writes = [`index.tsx`, `index.less`, `components`, `models`, `services`];
-let reads = [
-  `scripts/basicComponents/index.tsx`,
-  `scripts/basicComponents/index.less`,
-];
-let file = [];
-let author = require("os").homedir().split("\\").pop();
+const fs = require("fs-extra");
+const path = require("path");
+const chalk = require("chalk"); // 美化终端
+const symbols = require("log-symbols"); // 美化终端
 
-//检测是否存在文件夹
-let exists = function () {
-  return new Promise((res, rej) => {
-    (async function () {
-      for (let a of path) {
-        fs.existsSync(basepath + a)
-          ? (basepath = `${basepath}${a}/`)
-          : await mkdir(a);
-      }
-      res(basepath);
-    })();
-  });
-};
-//建立文件夹
-let mkdir = function (a) {
-  return new Promise((res, rej) => {
-    fs.mkdir(basepath + a, (err) => {
-      if (err) rej(err);
-      basepath = `${basepath}${a}/`;
-      res(basepath);
-    });
-  });
-};
-//读取模板文件内容，并替换为目标组件
-let readFile = function () {
-  return new Promise((res) => {
-    for (let a of reads) {
-      let text = fs.readFileSync(a).toString();
-      text = text
-        .replace(/time/g, moment().format("YYYY/MM/DD"))
-        .replace(/temp/g, name)
-        .replace(/author/g, author);
-      file.push(text);
-    }
-    res(file);
-  });
-};
-//生成文件，并填入之前读取的文件内容
-let writeFile = function (file) {
-  return new Promise((res, rej) => {
-    (async function () {
-      for (let a of writes) {
-        await fs.writeFile(
-          `${basepath}${a}`,
-          a == writes[3] ? file[0] : a == writes[0] ? file[1] : "",
-          (err) => {
-            if (err) rej(err);
-          }
-        );
-      }
-      res("succ");
-    })();
-  });
-};
-async function creatCpt() {
-  try {
-    await exists();
-    await readFile();
-    await writeFile(await readFile());
-    return console.log(`Successfully created ${name} component`);
-  } catch (err) {
-    console.error(err);
+const stringToCamel = str => {
+  let temp = str.split("-");
+  for (let i = 0; i < temp.length; i++) {
+    temp[i] = temp[i][0].toUpperCase() + temp[i].slice(1);
   }
-}
-creatCpt();
+  return temp.join("");
+};
+
+const reWrite = (path, name) => {
+  const files = fs.readdirSync(path);
+  files.forEach(file => {
+    const fileName = `${path}/${file}`;
+    if (fs.statSync(fileName).isFile()) {
+      const content = fs.readFileSync(fileName).toString();
+      // 创建子级组件XXX/yy,截取yy
+      const demoName = name.split("/").reverse()[0];
+      // 截取组件名-, 则写入的组件名采用大驼峰
+      const result = content.replace(/template/g, stringToCamel(demoName));
+      fs.writeFileSync(fileName, result);
+    } else {
+      reWrite(fileName, name);
+    }
+  });
+};
+
+const createComponent = (demoPath, targetpath, name) => {
+  console.log(symbols.success, chalk.green("开始创建..........,请稍候"));
+  fs.copy(demoPath, `${targetpath}/${name}`)
+    .then(() => {
+      reWrite(`${targetpath}/${name}`, name);
+      console.log(symbols.success, chalk.green("创建成功"));
+    })
+    .catch(err => {
+      console.log(symbols.error, chalk.red("创建失败", err));
+    });
+};
+
+// 拿到命令行的参数去生成对应的文件
+
+// 拿到命令行输入的模块名
+const moduleName = process.argv[2];
+// 默认模版目录
+const componentModulePath = path.resolve("./scripts/template");
+const assetsModulePath = path.resolve("./scripts/assets");
+const localeModulePath = path.resolve("./scripts/locales");
+// 输出的目标目录
+const componentTargetPath = path.resolve("src/views");
+const assetsTargetPath = path.resolve("src/assets");
+const localeTargetPath = path.resolve("src/locales");
+
+createComponent(componentModulePath, componentTargetPath, moduleName);
+createComponent(assetsModulePath, assetsTargetPath, moduleName);
+createComponent(localeModulePath, localeTargetPath, moduleName);
