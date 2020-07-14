@@ -32,9 +32,11 @@ class App extends Component<Props> {
       <div className="App">
         <header className="App-header">
           <p>切换
-            <Link to={'login'}>Loginmasterasd
+            <Link to={'login'}>Login
             </Link>
-            <Link to={'home'}>Homeasfnjkxuzhenasd
+            <Link to={'home'}>Home
+            </Link>
+            <Link to={'list'}>List
             </Link>
           </p>
         </header>

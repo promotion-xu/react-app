@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import './index.css';
+import './index.less';
 
 class Login extends React.Component {
   render() {
