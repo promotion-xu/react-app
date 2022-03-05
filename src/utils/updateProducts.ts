@@ -31,5 +31,3 @@ async function updateProducts() {
         newProducts
     }
 }
-
-updateProducts()
