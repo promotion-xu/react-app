@@ -6,7 +6,7 @@ class Tray {
 
     async init() {
         const trayId = store.app.trayId
-        stores.subscribe(() => {
+        store.subscribe(() => {
             const newState = store.app.trayId
             this.handleTrayChange(newState)
         })
